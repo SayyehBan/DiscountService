@@ -1,3 +1,4 @@
+using DiscountService.GRPC;
 using DiscountService.Infrastructure.Contexts;
 using DiscountService.Infrastructure.MappingProfile;
 using DiscountService.Model.Services;
@@ -11,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DiscountDataBaseContext>(o => o.UseSqlServer(SqlServerConnection.ConnectionString("lS/0QdfPVVsm8RW32uiOAg==", "FHSoIP0ocdF5pa41ewZO9w==", "qJ04Z6QkP1Klb16OXdMFJA==", "2q1aEqJs3l1O1BFHZfcDsg==", "u2ecg20z8m8bv67g", "x1bvxlpm78193fyw")));
 
-
+builder.Services.AddGrpc();
 
 builder.Services.AddAutoMapper(typeof(DiscountMappingProfile));
 builder.Services.AddTransient<IDiscountService, RDiscountService>();
@@ -31,7 +32,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.MapGrpcService<GRPCDiscountService>();
 app.MapControllers();
 
 app.Run();
