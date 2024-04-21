@@ -1,9 +1,11 @@
-using DiscountService.GRPC;
+﻿using DiscountService.GRPC;
 using DiscountService.Infrastructure.Contexts;
 using DiscountService.Infrastructure.MappingProfile;
 using DiscountService.Model.Services;
 using Microsoft.EntityFrameworkCore;
+using SayyehBanTools.ConfigureService;
 using SayyehBanTools.ConnectionDB;
+using SayyehBanTools.MessagingBus.RabbitMQ.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
